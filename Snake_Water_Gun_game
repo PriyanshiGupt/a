@@ -1,0 +1,40 @@
+#snake water gun
+import random
+cmp_win_count=0
+user_win_count=0
+tie_count=0
+while True:
+    lst=('Snake', 'Water', 'Gun')
+    cmp_choice=random.choice(lst)
+    user_choice=input("Enter 1 for Snake, 2 for Water, 3 for Gun and q to quit")
+    if user_choice=='q':
+        break
+    try:
+        user_choice=lst[int(user_choice)-1]
+    except:
+        print('Invalid input]n')
+    else:
+        if user_choice!=cmp_choice:
+            user_ind=lst.index(user_choice)
+            cmp_ind=lst.index(cmp_choice)
+            if cmp_ind>user_ind:
+                if cmp_ind-user_ind==1:
+                    user_win_count+=1
+                    print(f'You won: Your choice {user_choice}, computer choice {cmp_choice}')
+                else:
+                    cmp_win_count+=1
+                    print(f'You lost: Your choice {user_choice}, computer choice {cmp_choice}')
+            else:
+                if user_ind-cmp_ind==1:
+                    cmp_win_count+=1
+                    print(f'You lost: Your choice {user_choice}, computer choice {cmp_choice}')
+                else:
+                    user_win_count+=1
+                    print(f'You won: Your choice {user_choice}, computer choice {cmp_choice}')
+        else:
+            print(f"Tie, Both chose {user_choice}")
+            tie_count+=1
+        print('\n')
+print(f'You won {user_win_count} times, computer won {cmp_win_count} times and tie {tie_count} times')
+    
+    
